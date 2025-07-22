@@ -54,33 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
         .catch(err => alert("❌ " + err.message));
     });
 
-    btnAgregar.addEventListener("click", () => {
-        contador++;
-        const numeroMesa = contador.toString().padStart(2, '0');
-
-        const nuevaMesa = document.createElement("a");
-        nuevaMesa.classList.add("mesa", "libre");
-        nuevaMesa.href = `/src/features/apertura_mesa/vista.html?mesa=${numeroMesa}`;
-        nuevaMesa.innerHTML = `
-            <span class="numero">${numeroMesa}</span>
-            <img src="/src/assets/icono.png" class="icono" alt="Mesa" />
-            <span class="estado">Libre</span>
-            <div class="icono-eliminar">
-                <img src="/src/assets/eliminar.png" alt="Eliminar">
-            </div>
-        `;
-        contenedor.appendChild(nuevaMesa);
-    });
-
-    contenedor.addEventListener("click", (e) => {
-        const btnEliminar = e.target.closest(".icono-eliminar");
-        if (btnEliminar) {
-            e.preventDefault();
-            const mesa = btnEliminar.closest("a.mesa");
-            if (mesa) mesa.remove();
-        }
-    });
-
+   
     async function cargarAvisos() {
 
   try {
